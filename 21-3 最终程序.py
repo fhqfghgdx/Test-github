@@ -11,10 +11,8 @@ COMMENT_CHARS = '#:'
 
 for line in urlopen(URL).readlines():
     line = line.decode()
-    if not isspace(line) and not line[0] in COMMENT_CHARS:
+    if not line.isspace() and not line[0] in COMMENT_CHARS:
         data.append([float(n) for n in line.split()])
-
-print(data)
 
 if __name__ == '__main__':
     drawing = Drawing(500, 250)
@@ -37,6 +35,6 @@ if __name__ == '__main__':
 
     drawing.add(lp)
 
-    drawing.add(String(250, 150, 'Sunspots', fontSize = 14, fillColor = colors.red))
+    drawing.add(String(180, 200, 'Sunspots', fontSize = 14, fillColor = colors.red))
 
     renderPDF.drawToFile(drawing, 'report3.pdf', 'Sunspots')
